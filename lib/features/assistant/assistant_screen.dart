@@ -530,7 +530,9 @@ class _AssistantScreenState extends State<AssistantScreen> {
                     itemCount: _chatController.messages.length,
                     itemBuilder: (context, index) {
                       final m = _chatController.messages[index];
-                      return ChatBubble(message: m);
+                      return ChatBubble(message: m,
+                      tts: _ttsService,
+                      onDelete: ()=> _chatController.deleteMessage(m.id),);
                     },
                   ),
                 ),

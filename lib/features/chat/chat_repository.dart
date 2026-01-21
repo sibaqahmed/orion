@@ -99,6 +99,10 @@ class ChatRepository {
 
     await touchChat(chatId);
   }
+  Future<void> deleteMessage(String chatId, String messageId) async {
+    await _messagesRef(chatId).doc(messageId).delete();
+  }
+
 
   // ✅ HARD DELETE: delete messages subcollection (ALL) then delete chat doc
   Future<void> deleteChat(String chatId) async {

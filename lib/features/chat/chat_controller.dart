@@ -226,6 +226,11 @@ class ChatController extends ChangeNotifier {
     return "${t.substring(0, max).trim()}…";
   }
 
+  Future<void> deleteMessage(String messageId) async {
+    if (_activeChatId == null) return;
+    await _repo.deleteMessage(_activeChatId!, messageId);
+  }
+
   Future<void> _maybeAutoTitle(String chatId, String firstUserText) async {
     if (_titledChats.contains(chatId)) return;
 
